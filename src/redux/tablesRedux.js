@@ -32,7 +32,7 @@ export const updateTablesRequest = (table, setLoading) => {
       body: JSON.stringify(table),
     };
     fetch(`${API_URL}/${endpoint}/${table.id}`, options).then(() => {
-      setLoading(false);
+      dispatch(fetchTables(setLoading));
     });
   };
 };

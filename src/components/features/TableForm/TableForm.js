@@ -4,18 +4,16 @@ import styles from './TableForm.module.scss';
 import { useState } from 'react';
 import { updateTablesRequest, getTableById } from '../../../redux/tablesRedux';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router';
 import PropTypes from 'prop-types';
 
 function TableForm({ id, setLoading }) {
   const dispatch = useDispatch();
   const tableData = useSelector((state) => getTableById(state, id));
   const [formData, setFormData] = useState(tableData);
-  if (!tableData) return <Navigate to='/' />;
+
   const { status, bill, peopleAmount, maxPeopleAmount } = formData;
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     dispatch(updateTablesRequest(formData, setLoading));
   };
   const handlePeopleAmountChange = (e) => {

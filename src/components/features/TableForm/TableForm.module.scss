@@ -9,5 +9,9 @@
   /* Firefox */
   input[type=number] {
     -moz-appearance: textfield;
+    padding: 5px;
+    width: 45px;
+    margin:0 5px 0 5px;
+    text-align: center;
 }
 }

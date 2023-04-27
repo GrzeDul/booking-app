@@ -1,4 +1,4 @@
-import { API_URL } from '../config';
+import { API_URL, endpoint } from '../config';
 //selectors
 export const getTables = ({ tables }) => tables;
 export const getTableById = ({ tables }, id) =>
@@ -14,7 +14,7 @@ export const updateTables = (payload) => ({
 });
 export const fetchTables = (setLoading) => {
   return (dispatch) => {
-    fetch(API_URL)
+    fetch(`${API_URL}/${endpoint}`)
       .then((res) => res.json())
       .then((tables) => {
         dispatch(updateTables(tables));
@@ -31,7 +31,7 @@ export const updateTablesRequest = (table, setLoading) => {
       },
       body: JSON.stringify(table),
     };
-    fetch(`${API_URL}/${table.id}`, options).then(() => {
+    fetch(`${API_URL}/${endpoint}/${table.id}`, options).then(() => {
       setLoading(false);
     });
   };

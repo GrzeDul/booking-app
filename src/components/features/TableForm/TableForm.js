@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { updateTablesRequest, getTableById } from '../../../redux/tablesRedux';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Navigate } from 'react-router';
 
 function TableForm({ id, setLoading }) {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function TableForm({ id, setLoading }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateTablesRequest(formData, setLoading));
+    if (tableData.bill) return <Navigate to='/' />;
   };
   const handlePeopleAmountChange = (e) => {
     let value = e.target.value;

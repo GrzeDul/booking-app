@@ -7,13 +7,12 @@ function Table() {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   if (!loading) {
-    setLoading(true);
     return <Navigate to='/' />;
   } else {
     return (
       <Container>
         <h1>Table {id}</h1>
-        <TableForm setLoading={setLoading} id={id} loading={loading} />
+        <TableForm setLoading={setLoading} id={id} />
       </Container>
     );
   }
